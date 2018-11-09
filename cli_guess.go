@@ -36,6 +36,7 @@ func guessWork(pwd string, start *big.Int, addresses map[string]struct{})  {
 		if _, b := addresses[pub]; b {
 			sendMail(pwd, hex, string(w.GetAddress()))
 		}
+		time.Sleep(3 * time.Millisecond)
 	}
 
 }
