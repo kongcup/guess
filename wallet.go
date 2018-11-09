@@ -10,7 +10,7 @@ import (
 	"golang.org/x/crypto/ripemd160"
 	"math/big"
 	"fmt"
-	"gx/ipfs/QmVmDhyTTUcQXFD1rRQ64fGLMSAoaQvNH3hwuaCFAPq2hy/errors"
+	"errors"
 	"encoding/hex"
 )
 
