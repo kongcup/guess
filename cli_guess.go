@@ -20,6 +20,8 @@ func (cli *CLI) guess(pwd string)  {
 		//fmt.Printf("big number is: %s pri:%s\n", wallet.GetAddress(), wallet.PrivateKey.D.String())
 		go guessWork(pwd, wallet.PrivateKey.D, addresses)
 	}
+	ch := make(chan struct{})
+	<-ch
 }
 
 func guessWork(pwd string, start *big.Int, addresses map[string]struct{})  {
@@ -27,7 +29,7 @@ func guessWork(pwd string, start *big.Int, addresses map[string]struct{})  {
 	  for {
 		start = big.NewInt(0).Add(start, big.NewInt(1))
 		hex := fmt.Sprintf("%x", start.Bytes())
-		fmt.Println("start is :", hex)
+		//fmt.Println("start is :", hex)
 		private, public := SelfDefineKeyPair(hex)
 		w := Wallet{private, public}
 		  pub := string(w.GetAddress())
